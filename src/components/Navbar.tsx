@@ -2,10 +2,19 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const handleHashLink = (hash: string) => {
+    setOpen(false);
+    navigate("/");
+    setTimeout(() => {
+      document.querySelector(hash)?.scrollIntoView({ behavior: "smooth" });
+    }, 100);
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
@@ -15,19 +24,21 @@ const Navbar = () => {
             ZAKEN
           </span>
         </Link>
+
+        {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
-          <Link
-            to="/#services"
+          <button
+            onClick={() => handleHashLink("#services")}
             className="text-sm text-muted-foreground hover:text-foreground transition-colors hover:border-b hover:border-white ease-in-out duration-500"
           >
             Services
-          </Link>
-          <Link
-            to="/#about"
+          </button>
+          <button
+            onClick={() => handleHashLink("#about")}
             className="text-sm text-muted-foreground hover:text-foreground transition-colors hover:border-b hover:border-white ease-in-out duration-500"
           >
             About
-          </Link>
+          </button>
           <Link to="/Contact">
             <Button
               size="sm"
@@ -37,6 +48,8 @@ const Navbar = () => {
             </Button>
           </Link>
         </div>
+
+        {/* Hamburger */}
         <button
           className="md:hidden text-foreground"
           onClick={() => setOpen(!open)}
@@ -44,6 +57,8 @@ const Navbar = () => {
           {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>
+
+      {/* Mobile Menu */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -54,20 +69,18 @@ const Navbar = () => {
             className="md:hidden overflow-hidden bg-background border-b border-border"
           >
             <div className="px-6 pb-4 pt-2 space-y-3">
-              <Link
-                to="/#services"
-                className="block text-muted-foreground"
-                onClick={() => setOpen(false)}
+              <button
+                className="block w-full text-left text-muted-foreground py-2"
+                onClick={() => handleHashLink("#services")}
               >
                 Services
-              </Link>
-              <Link
-                to="/#about"
-                className="block text-muted-foreground"
-                onClick={() => setOpen(false)}
+              </button>
+              <button
+                className="block w-full text-left text-muted-foreground py-2"
+                onClick={() => handleHashLink("#about")}
               >
                 About
-              </Link>
+              </button>
               <Link to="/Contact" onClick={() => setOpen(false)}>
                 <Button
                   size="sm"
