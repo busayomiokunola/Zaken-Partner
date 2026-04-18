@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const FinalCTA = () => (
   <section className="py-24 md:py-32 bg-[#5b7158]">
@@ -18,14 +19,16 @@ const FinalCTA = () => (
           Book a free strategy call. We'll assess where you are, where you want
           to go, and how we can get you there.
         </p>
-        <Button
-          size="lg"
-          className=" font-bold px-10 py-6 mb-6 bg-white text-black hover:bg-transparent hover:border hover:border-white hover:text-white "
-        >
-          <p className="transition-colors hover:border-b hover:border-white ease-in duration-500">
-            Book Your Free Consultation
-          </p>
-        </Button>
+        <Link to="/Contact">
+          <Button
+            size="lg"
+            className=" font-bold px-10 py-6 mb-6 bg-white text-black hover:bg-transparent hover:border hover:border-white hover:text-white "
+          >
+            <p className="transition-colors hover:border-b hover:border-white ease-in duration-500">
+              Book Your Free Consultation
+            </p>
+          </Button>
+        </Link>
         <p className="text-lg mt-6">
           No pressure. No pitch decks required. Just a conversation about your
           business.

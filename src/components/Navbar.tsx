@@ -16,23 +16,26 @@ const Navbar = () => {
           </span>
         </Link>
         <div className="hidden md:flex items-center gap-8">
-          <Link to="/#services" className="text-sm text-muted-foreground hover:text-foreground transition-colors hover:border-b hover:border-white ease-in-out duration-500">
-
+          <Link
+            to="/#services"
+            className="text-sm text-muted-foreground hover:text-foreground transition-colors hover:border-b hover:border-white ease-in-out duration-500"
+          >
             Services
           </Link>
-          <Link to="/#about" className="text-sm text-muted-foreground hover:text-foreground transition-colors hover:border-b hover:border-white ease-in-out duration-500">
+          <Link
+            to="/#about"
+            className="text-sm text-muted-foreground hover:text-foreground transition-colors hover:border-b hover:border-white ease-in-out duration-500"
+          >
             About
           </Link>
-          <Button
-            size="sm"
-            className="bg-[#5b7158] text-white hover:bg-[#4a5f48] "
-          >
-            <a href="/Contact">
-              <p className="hover:text-foreground transition-colors hover:border-b hover:border-white ease-in-out duration-500">
-                Contact Us
-              </p>
-            </a>
-          </Button>
+          <Link to="/Contact">
+            <Button
+              size="sm"
+              className="bg-[#5b7158] text-white hover:bg-[#4a5f48]"
+            >
+              Contact Us
+            </Button>
+          </Link>
         </div>
         <button
           className="md:hidden text-foreground"
