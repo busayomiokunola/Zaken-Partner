@@ -54,26 +54,28 @@ const Navbar = () => {
             className="md:hidden overflow-hidden bg-background border-b border-border"
           >
             <div className="px-6 pb-4 pt-2 space-y-3">
-              <a
-                href="#services"
+              <Link
+                to="/#services"
                 className="block text-muted-foreground"
                 onClick={() => setOpen(false)}
               >
                 Services
-              </a>
-              <a
-                href="#about"
+              </Link>
+              <Link
+                to="/#about"
                 className="block text-muted-foreground"
                 onClick={() => setOpen(false)}
               >
                 About
-              </a>
-              <Button
-                size="sm"
-                className="w-full bg-[#5b7158] text-white hover:bg-[#4a5f48]"
-              >
-                Book a Call
-              </Button>
+              </Link>
+              <Link to="/Contact" onClick={() => setOpen(false)}>
+                <Button
+                  size="sm"
+                  className="w-full bg-[#5b7158] text-white hover:bg-[#4a5f48]"
+                >
+                  Book a Call
+                </Button>
+              </Link>
             </div>
           </motion.div>
         )}
