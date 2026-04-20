@@ -3,6 +3,7 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
+import Logo from "../assets/logo.png"
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -19,8 +20,15 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
       <div className="container flex items-center justify-between h-16">
-        <Link to="/">
-          <span className="text-xl font-heading font-bold tracking-wide">
+        <Link to="/" className="flex items-center gap-2">
+          <img
+            src={Logo}
+            // width={130}
+            // height={150}
+            alt="Zaken Logo"
+            className="object-contain fixed left-0 w-20 h-20 md:w-24 md:h-24"
+          />
+          <span className="text-xl pl-12 md:pl-16 font-heading font-bold tracking-wide">
             ZAKEN
           </span>
         </Link>
