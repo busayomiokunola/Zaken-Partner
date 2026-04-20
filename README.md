@@ -56,7 +56,7 @@ npm install
 npm run dev
 ```
 
-4. Open your browser at `http://localhost:5173`
+4. Open your browser at `http://localhost:8080`
 
 ---
 
