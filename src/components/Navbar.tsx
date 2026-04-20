@@ -2,12 +2,21 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
-import { Link, useNavigate } from "react-router-dom";
-import Logo from "../assets/logo.png"
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import Logo from "../assets/logo.png";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleHomeClick = () => {
+    if (location.pathname === "/") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      navigate("/");
+    }
+  };
 
   const handleHashLink = (hash: string) => {
     setOpen(false);
@@ -19,21 +28,18 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
-      <div className="container flex items-center justify-between h-16">
-        <Link to="/" className="flex items-center gap-2">
+      <div className="container flex items-center justify-between h-20">
+        <button onClick={handleHomeClick} className="flex items-center gap-2">
           <img
             src={Logo}
-            // width={130}
-            // height={150}
             alt="Zaken Logo"
-            className="object-contain fixed left-0 w-20 h-20 md:w-24 md:h-24"
+            className="object-contain fixed left-0 w-32 h-32 md:w-52 md:h-52"
           />
-          <span className="text-xl pl-12 md:pl-16 font-heading font-bold tracking-wide">
+          <span className="text-xl pl-16 md:pl-32 font-heading font-bold tracking-wide text-[#5b7158]">
             ZAKEN
           </span>
-        </Link>
+        </button>
 
-        {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
           <button
             onClick={() => handleHashLink("#services")}
@@ -84,7 +90,7 @@ const Navbar = () => {
                 Services
               </button>
               <button
-                className="block w-full text-left text-muted-foreground py-2"
+                className="block w-full text-left text-muted-foreground pt-2 pb-4"
                 onClick={() => handleHashLink("#about")}
               >
                 About
